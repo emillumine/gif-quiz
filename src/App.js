@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import GifList from './components/gif_list';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+    render() {
+        const gifs = [
+            {
+                url: 'https://media.giphy.com/media/j5PrIx7lLNRo4pGYYB/source.gif',
+                id: 'j5PrIx7lLNRo4pGYYB',
+            }, {
+                url: 'https://media.giphy.com/media/MeJgB3yMMwIaHmKD4z/source.gif',
+                id: 'MeJgB3yMMwIaHmKD4z',
+            },
+        ]
+        return (
+            <div className="App">
+                <GifList gifs={gifs} />
+            </div>
+        );
+    }
 }
 
 export default App;
