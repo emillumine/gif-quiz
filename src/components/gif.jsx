@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 class Gif extends React.Component {
     render() {
@@ -9,4 +9,4 @@ class Gif extends React.Component {
     }
 }
 
-export default Gif;
+export default Gif
