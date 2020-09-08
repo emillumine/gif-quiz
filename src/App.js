@@ -1,5 +1,6 @@
 import React from 'react'
 import GiphyApi from 'giphy-api'
+import randomWords from 'random-words'
 import GifList from './components/gif_list'
 import './App.css'
 
@@ -33,10 +34,15 @@ class App extends React.Component {
         })
     }
 
+    play = () => {
+        this.fetchGifs(randomWords())
+    }
+
     render() {
         const {gifs} = this.state
         return (
             <div className="App">
+                <button onClick={this.play}>Play</button>
                 <GifList gifs={gifs} />
             </div>
         )
