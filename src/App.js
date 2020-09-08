@@ -2,6 +2,7 @@ import React from 'react'
 import GiphyApi from 'giphy-api'
 import randomWords from 'random-words'
 import GifList from './components/gif_list'
+import PlayerInput from './components/player_input'
 import './App.css'
 
 
@@ -42,7 +43,7 @@ class App extends React.Component {
         const {gifs} = this.state
         return (
             <div className="App">
-                <button onClick={this.play}>Play</button>
+                <PlayerInput /><button onClick={this.play}>Play</button>
                 <GifList gifs={gifs} />
             </div>
         )
