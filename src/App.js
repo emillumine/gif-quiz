@@ -3,7 +3,7 @@ import GiphyApi from "giphy-api";
 import randomWords from "random-words";
 import GifList from "./components/gif_list";
 import PlayerInput from "./components/player_input";
-import "./App.css";
+import "./assets/stylesheets/App.scss";
 
 const giphy = GiphyApi("fafiKafsEJZchqyTLli0XAt4PQkz3Sk9");
 

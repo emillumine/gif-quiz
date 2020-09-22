@@ -20,14 +20,15 @@ class PlayerInput extends React.Component {
   render() {
     const { playerAnswer } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="interaction" onSubmit={this.handleSubmit}>
         <input
           type="text"
+          className="input-field"
           placeholder="Your guess"
           value={playerAnswer}
           onChange={this.handleChange}
         />
-        <input type="submit" value="Play" />
+        <input className="input-submit" type="submit" value="Play" />
       </form>
     );
   }

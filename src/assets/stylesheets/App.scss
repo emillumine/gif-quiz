@@ -1,0 +1,36 @@
+.App {
+  text-align: center;
+  padding: 100px 0 0;
+
+  .interaction {
+    // border: 1px solid brown;
+    display: flex;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+
+    .input-field {
+      border: none;
+      height: 70px;
+      font-size: 25px;
+      border-radius: 5px 0 0 5px;
+      -webkit-appearance: none;
+      background: none;
+      outline: 0;
+      padding: 0;
+      text-align: left;
+      padding-left: 20px;
+      background-color: rgb(230, 230, 230);
+      color: rgb(66, 66, 66);
+    }
+    .input-submit {
+      height: 70px;
+      padding: 0 20px;
+      font-size: 25px;
+      border: none;
+      border-radius: 0 5px 5px 0;
+      color: rgb(230, 230, 230);
+      background-color: rgb(66, 66, 66);
+    }
+  }
+}
