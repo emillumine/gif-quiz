@@ -1,53 +1,58 @@
-import React from 'react'
-import GiphyApi from 'giphy-api'
-import randomWords from 'random-words'
-import GifList from './components/gif_list'
-import PlayerInput from './components/player_input'
-import './App.css'
+import React from "react";
+import GiphyApi from "giphy-api";
+import randomWords from "random-words";
+import GifList from "./components/gif_list";
+import PlayerInput from "./components/player_input";
+import "./App.css";
 
-
-const giphy = GiphyApi('fafiKafsEJZchqyTLli0XAt4PQkz3Sk9')
+const giphy = GiphyApi("fafiKafsEJZchqyTLli0XAt4PQkz3Sk9");
 
 class App extends React.Component {
-    constructor (props) {
-        super(props)
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            gifs: [],
-        }
-    }
+    this.state = {
+      gifs: [],
+      mysteryWord: "",
+    };
+  }
 
-    componentDidMount() {
-        this.fetchGifs("hello")
-    }
+  componentDidMount() {
+    this.play();
+  }
 
-    fetchGifs = (query) => {
-        giphy.search({
-            q: query,
-            limit: 10,
-            rating: 'g',
-        }).then((response) => {
-            this.setState({
-                gifs: response.data.map((gifData) => {
-                    return { url: gifData.images.fixed_height.url, id: gifData.id }
-                }),
-            })
-        })
-    }
+  fetchGifs = async (query) => {
+    const response = await giphy.search({
+      q: query,
+      limit: 10,
+      rating: "g",
+    });
+    return response.data.map((gifData) => {
+      return { url: gifData.images.fixed_height.url, id: gifData.id };
+    });
+  };
 
-    play = () => {
-        this.fetchGifs(randomWords())
-    }
+  play = async () => {
+    const mysteryWord = randomWords();
+    const gifs = await this.fetchGifs(mysteryWord);
+    this.setState({
+      mysteryWord,
+      gifs,
+    });
+  };
 
-    render() {
-        const {gifs} = this.state
-        return (
-            <div className="App">
-                <PlayerInput /><button onClick={this.play}>Play</button>
-                <GifList gifs={gifs} />
-            </div>
-        )
-    }
+  render() {
+    const { gifs, mysteryWord } = this.state;
+    return (
+      <div className="App">
+        <PlayerInput mysteryWord={mysteryWord} />
+        <button type="button" onClick={this.play}>
+          Reset
+        </button>
+        <GifList gifs={gifs} />
+      </div>
+    );
+  }
 }
 
-export default App
+export default App;
