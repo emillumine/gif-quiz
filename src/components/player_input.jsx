@@ -11,10 +11,9 @@ class PlayerInput extends React.Component {
   };
 
   handleSubmit = (event) => {
-    const { mysteryWord } = this.props;
+    const { handlePlayerAnswer } = this.props;
     const { playerAnswer } = this.state;
-    const message = mysteryWord === playerAnswer ? "you win!" : "you lose...";
-    alert(message);
+    handlePlayerAnswer(playerAnswer);
     event.preventDefault();
   };
 

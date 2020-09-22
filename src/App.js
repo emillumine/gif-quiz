@@ -14,6 +14,7 @@ class App extends React.Component {
     this.state = {
       gifs: [],
       mysteryWord: "",
+      attempt: 0,
     };
   }
 
@@ -38,18 +39,29 @@ class App extends React.Component {
     this.setState({
       mysteryWord,
       gifs,
+      attempt: 0,
     });
   };
 
+  handlePlayerAnswer = (playerAnswer) => {
+    const { mysteryWord, attempt } = this.state;
+    if (playerAnswer === mysteryWord) {
+      alert("you win!");
+    } else {
+      this.setState({ attempt: attempt + 1 });
+      alert("you lose...");
+    }
+  };
+
   render() {
-    const { gifs, mysteryWord } = this.state;
+    const { gifs, attempt } = this.state;
     return (
       <div className="App">
-        <PlayerInput mysteryWord={mysteryWord} />
+        <PlayerInput handlePlayerAnswer={this.handlePlayerAnswer} />
         <button type="button" onClick={this.play}>
           Reset
         </button>
-        <GifList gifs={gifs} />
+        <GifList gifs={gifs} length={attempt + 1} />
       </div>
     );
   }
