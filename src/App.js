@@ -5,7 +5,7 @@ import GifList from "./components/gif_list";
 import PlayerInput from "./components/player_input";
 import "./assets/stylesheets/App.scss";
 
-const giphy = GiphyApi("fafiKafsEJZchqyTLli0XAt4PQkz3Sk9");
+const giphy = GiphyApi(process.env.REACT_APP_UNSECURED_GIPHY_API_KEY);
 
 class App extends React.Component {
   constructor(props) {
